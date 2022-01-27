@@ -8,8 +8,8 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Inter', sans-serif;
-  background: #FFFFFF;
+  font-family: "Inter", sans-serif;
+  background: #ffffff;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -22,13 +22,10 @@ body {
   height: 100vh;
 }
 
-.header h2 {
-  font-size: 1.5rem;
-  font-weight: 800;
-}
 img {
   padding: 0px;
   margin: 0px;
+  width: 100%;
   max-width: 1000px;
   height: auto;
   vertical-align: middle;
@@ -48,7 +45,8 @@ a {
   padding: 1.5rem;
   border-radius: 15px;
   width: 1900px;
-  height:900px;
+  max-width: 100%;
+  height: 900px;
   position: relative;
 }
 
@@ -57,7 +55,13 @@ a {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding: 10px;
+  padding: 1%;
+}
+
+.name {
+  color: #005ce5;
+  font-size: 2rem;
+  font-weight: 800;
 }
 
 .file-upload::after {
@@ -76,15 +80,6 @@ a {
   -ms-flex-pack: center;
   justify-content: center;
 }
-
-.file-upload h2 {
-  font-size: 1.5rem;
-  color: #005CE5;
-  position: relative;
-  padding-right: 1rem;
-  margin-bottom: 1rem;
-}
-
 
 .custom-file-drop-area {
   display: -webkit-box;
@@ -162,4 +157,5 @@ a {
   width: 170px;
   height: 20px;
   background-color: white;
+  border: none;
 }

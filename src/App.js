@@ -85,7 +85,7 @@ function App() {
   return (
     <div className="file-upload">
       <div className="header">
-        <h2>Color palette generator</h2>
+        <h2 className="name">Paletter</h2>
         <form className="" encType="multipart/form-data">
           <div
             className={
