@@ -40,11 +40,6 @@ function App() {
     }
   };
 
-  const handleReset = () => {
-    setPost({ photos: [] });
-    setColors([])
-  };
-
   const handlehighlight = (e) => {
     e.preventDefault();
     e.stopPropagation();
@@ -72,68 +67,79 @@ function App() {
     const colorThief = new ColorThief();
     const img = imgRef.current;
     const results = colorThief.getPalette(img, 6);
-    var b = results.map(function(subarray) {
-      return subarray.map(function (x) {
+    var b = results.map((subarray) => {
+      return subarray.map((x) => {
         //For each array element
         x = parseInt(x).toString(16); //Convert to a base16 string
         return x.length === 1 ? "0" + x : x; //Add zero if we get only one character
       });
-      
-    })
-    const c = b.map(function (x) {
-      const hex = x.join('')
-      return hex
     });
-    console.log(c)
+    const c = b.map(function (x) {
+      const hex = "#" + x.join("");
+      return hex;
+    });
+    setColors(c);
+    console.log(c);
   };
 
   return (
     <div className="file-upload">
       <div className="header">
         <h2>Color palette generator</h2>
-        <button className="reset" onClick={handleReset}>
-          Reset
-        </button>
+        <form className="" encType="multipart/form-data">
+          <div
+            className={
+              highlight
+                ? "custom-file-drop-area highlight"
+                : "custom-file-drop-area"
+            }
+            onDragEnter={handlehighlight}
+            onDragOver={handlehighlight}
+            onDragLeave={handleunhighlight}
+            onDrop={handledrop}
+          >
+            <div className="custom-file-drop-area ">
+              <input
+                type="file"
+                name="photos"
+                placeholder="Enter photos"
+                id="filephotos"
+                onChange={handlefilechange}
+              />
+              <label htmlFor="filephotos">Drag & Drop</label>
+            </div>
+          </div>
+        </form>
       </div>
-      <form className="" encType="multipart/form-data">
-        <div
-          className={
-            highlight
-              ? "custom-file-drop-area highlight"
-              : "custom-file-drop-are"
-          }
-          onDragEnter={handlehighlight}
-          onDragOver={handlehighlight}
-          onDragLeave={handleunhighlight}
-          onDrop={handledrop}
-        >
-          <div className="custom-file-drop-area ">
-            <input
-              type="file"
-              name="photos"
-              placeholder="Enter photos"
-              id="filephotos"
-              onChange={handlefilechange}
-            />
-            <label htmlFor="filephotos">Drag & Drop</label>
-          </div>
-          <div className="custom-file-preview">
-            {photos.length > 0 &&
-              photos.map((item, index) => (
-                <div className="prev-img" key={index}>
-                  <img
-                    src={item.src}
-                    alt={item.name}
-                    ref={imgRef}
-                    onLoad={getColor}
-                  />
-                </div>
-              ))}
-          </div>
-        </div>
-      </form>
 
-      <div className="palette-container"></div>
+      <div className="custom-file-preview">
+        {photos.length > 0 && (
+          <div className="prev-img">
+            <img
+              src={photos[photos.length - 1].src}
+              alt={photos[photos.length - 1].name}
+              ref={imgRef}
+              onLoad={getColor}
+              onChange={getColor}
+            />
+          </div>
+        )}
+      </div>
+
+      <div className="palette-container">
+        {colors.length > 0 &&
+          colors.map((item, index) => (
+            <div
+              className="color-item"
+              style={{ backgroundColor: item }}
+              key={index}
+            >
+              <div className="color-label-container">
+                <p className="color-label">{item}</p>
+              </div>
+            </div>
+          ))}
+      </div>
     </div>
   );
 }
