@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/paletter/static/css/main.42f449a8.css",
+    "main.js": "/paletter/static/js/main.fa7b1370.js",
+    "static/js/787.753be0df.chunk.js": "/paletter/static/js/787.753be0df.chunk.js",
+    "index.html": "/paletter/index.html",
+    "main.42f449a8.css.map": "/paletter/static/css/main.42f449a8.css.map",
+    "main.fa7b1370.js.map": "/paletter/static/js/main.fa7b1370.js.map",
+    "787.753be0df.chunk.js.map": "/paletter/static/js/787.753be0df.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.42f449a8.css",
+    "static/js/main.fa7b1370.js"
+  ]
+}
