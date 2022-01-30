@@ -40,13 +40,13 @@ function App() {
     }
   };
 
-  const handlehighlight = (e) => {
+  const handleHighlight = (e) => {
     e.preventDefault();
     e.stopPropagation();
     setHighlight(true);
   };
 
-  const handleunhighlight = (e) => {
+  const handleUnhighlight = (e) => {
     e.preventDefault();
     e.stopPropagation();
     setHighlight(false);
@@ -93,9 +93,9 @@ function App() {
                 ? "custom-file-drop-area highlight"
                 : "custom-file-drop-area"
             }
-            onDragEnter={handlehighlight}
-            onDragOver={handlehighlight}
-            onDragLeave={handleunhighlight}
+            onDragEnter={handleHighlight}
+            onDragOver={handleHighlight}
+            onDragLeave={handleUnhighlight}
             onDrop={handledrop}
           >
             <div className="custom-file-drop-area ">
