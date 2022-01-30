@@ -1,6 +1,9 @@
 import "./Assets/main.css";
 import { useState, useRef } from "react";
 import ColorThief from "colorthief";
+import ImagePreview from "./Components/ImagePreview";
+import Palette from "./Components/Palette";
+import { FaUpload } from "react-icons/fa";
 
 function App() {
   const [post, setPost] = useState({
@@ -106,40 +109,24 @@ function App() {
                 id="filephotos"
                 onChange={handlefilechange}
               />
-              <label htmlFor="filephotos">Drag & Drop</label>
+              <label htmlFor="filephotos">drop</label>
+              <FaUpload color="white" />
             </div>
           </div>
         </form>
       </div>
 
-      <div className="custom-file-preview">
-        {photos.length > 0 && (
-          <div className="prev-img">
-            <img
-              src={photos[photos.length - 1].src}
-              alt={photos[photos.length - 1].name}
-              ref={imgRef}
-              onLoad={getColor}
-              onChange={getColor}
-            />
-          </div>
-        )}
-      </div>
+      {photos.length === 0 ? (
+        <div className="text-container"><div className="text-preview">Drop an image to start...</div></div>
+        
+      ) : (
+        <div><ImagePreview photos={photos} imgRef={imgRef} getColor={getColor} />
+        <Palette colors={colors} /> </div>
+      )}
 
-      <div className="palette-container">
-        {colors.length > 0 &&
-          colors.map((item, index) => (
-            <div
-              className="color-item"
-              style={{ backgroundColor: item }}
-              key={index}
-            >
-              <div className="color-label-container">
-                <p className="color-label">{item}</p>
-              </div>
-            </div>
-          ))}
-      </div>
+      {/* <ImagePreview photos={photos} imgRef={imgRef} getColor={getColor} /> */}
+
+      
     </div>
   );
 }
