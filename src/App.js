@@ -123,9 +123,6 @@ function App() {
         <div><ImagePreview photos={photos} imgRef={imgRef} getColor={getColor} />
         <Palette colors={colors} /> </div>
       )}
-
-      {/* <ImagePreview photos={photos} imgRef={imgRef} getColor={getColor} /> */}
-
       
     </div>
   );
